@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    search-->
+        <record id="visitor_management_card_view_search" model="ir.ui.view">
+           <field name="name">visitor.management.card.view.search</field>
+           <field name="model">visitor.management.card</field>
+            <field name="arch" type="xml">
+                <search string="Visitor cards">
+                    <field name="name" string="Folio" filter_domain="[('name', 'ilike', self)]"/>
+                    <filter name="active_filter" string="Archived" domain="[('active', '=', False)]"/>
+                    <group>
+                        <filter name="group_by_type" string="Type" context="{'group_by': 'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--    tree-->
+        <record id="visitor_management_card_view_tree" model="ir.ui.view">
+            <field name="name">visitor.management.card.view.tree</field>
+            <field name="model">visitor.management.card</field>
+            <field name="arch" type="xml">
+                <tree string="Visitor cards">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="create_uid" string="Create by"/>
+                    <field name="create_date" string="Create date"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form-->
+        <record id="visitor_management_card_view_form" model="ir.ui.view">
+            <field name="name">visitor.management.card.view.form</field>
+            <field name="model">visitor.management.card</field>
+            <field name="arch" type="xml">
+                <form string="Visitor card">
+                    <field name="active" invisible="1"/>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg-color="bg-danger" invisible="active"/>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Folio"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="type" default_focus="1"/>
+                                <field name="note"/>
+                            </group>
+                            <group>
+                                <field name="create_uid" string="Create by"/>
+                                <field name="create_date" string="Create date"/>
+                            </group>
+                        </group>
+                    <!--
+                        <notebook>
+                            <page string="Comment">
+                                <field name="note"/>
+                            </page>
+                            <page string="About">
+                                This is an example of notebooks
+                            </page>
+                        </notebook>
+                    -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

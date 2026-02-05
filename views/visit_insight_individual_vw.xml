@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    search-->
+        <record id="visit_insight_individual_view_search" model="ir.ui.view">
+            <field name="name">visit.insight.individual.view.search</field>
+            <field name="model">visit.insight.individual</field>
+            <field name="arch" type="xml">
+                <search string="Visit insight individual">
+                    <field name="partner_id" string="Visitor name" filter_domain="[('partner_id', 'ilike', self)]"/>
+                    <field name="visitor_id" string="Visitor ID" filter_domain="[('visitor_id', 'ilike', self)]"/>
+                    <field name="name" string="Folio" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="visitor_company_name" string="Company name" filter_domain="[('visitor_company_name', 'ilike', self)]"/>
+                    <filter name="active_filter" string="Archived" domain="[('active', '=', False)]"/>
+                    <separator/>
+                    <filter name="is_checkin" string="Visit active" domain="[('state', '=', 'checkin')]"/>
+                    <group>
+                        <filter name="group_by_employee_id" string="Meeting With" context="{'group_by': 'employee_id'}"/>
+                        <filter name="group_by_state" string="Status" context="{'group_by': 'state'}"/>
+                        <filter name="group_by_partner_id" string="Visitor name" context="{'group_by': 'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <!--    tree-->
+        <record id="visit_insight_individual_view_tree" model="ir.ui.view">
+            <field name="name">visit.insight.individual.view.tree</field>
+            <field name="model">visit.insight.individual</field>
+            <field name="arch" type="xml">
+                <tree string="Visit insights individual" create="0">
+                    <field name="name"/>
+                    <field name="visitor_id" optional="show"/>
+                    <field name="companion_name"/>
+                    <field name="type2_visitor_identification_id" optional="show"/>
+                    <field name="visitor2_personal_identification" optional="show"/>
+                    <field name="visitor_company_name"/>
+                    <field name="meeting_with"/>
+                    <field name="visitor2_card_id" optional="show"/>
+                    <field name="visitor2_card_type" optional="show"/>
+                    <field name="check_in_datetime"/>
+                    <field name="check_out_datetime"/>
+                    <field name="duration" optional="show"/>
+                    <field name="formatted_duration"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

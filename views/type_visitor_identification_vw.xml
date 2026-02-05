@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--
+          Con base al modelo ‘TypeVisitorIdentification’ en Odoo 17 escrito en python se necesita realizar la vistas
+          básicas en XML de formulario, árbol y búsqueda y acción y elemento de menú
+
+          En la vista búsqueda toma en cuenta los siguientes criterios:
+          1. El campo de búsqueda sera ‘name’  con atributo de campo string="Visitor ID name".
+          2. Realiza un filtro (<filter/>) con atributos de campo name=”active_filter”, string=”Archived” para mostrar
+           los registros archivados.
+
+          En la vista formulario (form) toma en cuenta los siguientes criterios:
+          1. El campo "active" debe de tener el atributo invisible en 1.
+          2. Utiliza la etiqueta widget con titulo “Archived” y bg-color="bg-danger" para marcar los registros archivados.
+
+          Datos del modelo:
+
+          class TypeVisitorIdentification(models.Model): ...
+        -->
+
+        <!--    search-->
+        <record id="type_visitor_identification_view_search" model="ir.ui.view">
+            <field name="name">type.visitor.identification.view.search</field>
+            <field name="model">type.visitor.identification</field>
+            <field name="arch" type="xml">
+                <search string="Search visitor types">
+                    <field name="name" string="Visitor ID name"/>
+                    <separator/>
+                    <filter name="active_filter" string="Archived" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!--    tree-->
+        <record id="type_visitor_identification_view_tree" model="ir.ui.view">
+            <field name="name">type.visitor.identification.view.tree</field>
+            <field name="model">type.visitor.identification</field>
+            <field name="arch" type="xml">
+                <tree string="Visitor identification types">
+                    <field name="name"/>
+                    <field name="short_description"/>
+                    <field name="active" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form-->
+        <record id="type_visitor_identification_view_form" model="ir.ui.view">
+            <field name="name">type.visitor.identification.view.form</field>
+            <field name="model">type.visitor.identification</field>
+            <field name="arch" type="xml">
+                <form string="Type visitor identification">
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active"/>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Visitor identification name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <field name="short_description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

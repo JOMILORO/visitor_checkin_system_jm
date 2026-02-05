@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_visitor_management_card" model="ir.sequence">
+            <field name="name">Sequence for visitor management card</field>
+            <field name="implementation">no_gap</field>
+            <field name="code">sequence.visitor.management.card</field>
+            <field name="prefix">TMC</field>
+            <field name="suffix"></field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_property_counter" model="ir.sequence">
+            <field name="name">Sequence for property counter</field>
+            <field name="implementation">no_gap</field>
+            <field name="code">sequence.property.counter</field>
+            <field name="prefix">P%(year)s%(month)s</field>
+            <field name="suffix"></field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_visit_insight" model="ir.sequence">
+            <field name="name">Sequence for visit insight</field>
+            <field name="implementation">no_gap</field>
+            <field name="code">sequence.visit.insight</field>
+            <field name="prefix">FVD%(year)s%(month)s</field>
+            <field name="suffix"></field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="sequence_visitor_id" model="ir.sequence">
+            <field name="name">Sequence for visitor</field>
+            <field name="implementation">no_gap</field>
+            <field name="code">sequence.visitor.id</field>
+            <field name="prefix">V</field>
+            <field name="suffix"></field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="number_next_actual">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

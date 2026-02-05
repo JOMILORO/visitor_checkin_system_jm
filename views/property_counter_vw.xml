@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    search-->
+        <record id="property_counter_view_search" model="ir.ui.view">
+           <field name="name">property.counter.view.search</field>
+           <field name="model">property.counter</field>
+            <field name="arch" type="xml">
+                <search string="Property counter">
+                    <field name="employee_name_id" string="Employee Name" filter_domain="['|', ('employee_name_id', 'ilike', self),
+                                                                                       ('name', 'ilike', self)]"/>
+                    <filter name="active_filter" string="Archived" domain="[('active', '=', False)]"/>
+                    <group>
+                        <filter name="group_by_employee_name_id" string="Employee Name" context="{'group_by': 'employee_name_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--    tree-->
+        <record id="property_counter_view_tree" model="ir.ui.view">
+            <field name="name">property.counter.view.tree</field>
+            <field name="model">property.counter</field>
+            <field name="arch" type="xml">
+                <tree string="Property counters">
+                    <field name="name"/>
+                    <field name="employee_name_id"/>
+                    <field name="employee_mobile_phone"/>
+                    <field name="employee_department_name"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form-->
+        <record id="property_count_view_form" model="ir.ui.view">
+            <field name="name">property.count.view.form</field>
+            <field name="model">property.counter</field>
+            <field name="arch" type="xml">
+                <form string="Property counter">
+                    <field name="active" invisible="1"/>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg-color="bg-danger" invisible="active"/>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Folio"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_name_id" default_focus="1"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="employee_mobile_phone"/>
+                                <field name="employee_work_email"/>
+                                <field name="employee_department_name"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Personal Belongings" name="personal_belongings">
+                                <field name="belongings_ids">
+                                    <tree editable="bottom">
+                                        <field name="property_counter_id"/>
+                                        <field name="property_name"/>
+                                        <field name="property_count"/>
+                                        <field name="permission"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--
+            Con base al modelo ‘VehicleBrand’ en Odoo 17 escrito en python se necesita realizar la vistas básicas en XML de formulario, árbol y búsqueda.
+
+            En la vista búsqueda toma en cuenta los siguientes criterios:
+            1. El campo de búsqueda sera ‘name’  con atributo de campo string="Make (of car)"
+            2. Solo habrá una agrupación por el campo ‘category’  y atributos de campo name="group_by_category" y string="category"
+
+            Modelo ‘VehicleBrand’:
+            class VehicleBrand(models.Model):
+            # Identification attributes and database ...
+        -->
+
+        <!--    search-->
+        <record id="vehicle_brand_view_search" model="ir.ui.view">
+            <field name="name">vehicle.brand.view.search</field>
+            <field name="model">vehicle.brand</field>
+            <field name="arch" type="xml">
+                <search string="Search Vehicle Brand">
+                    <field name="name" string="Make (of car)"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_category" string="category" context="{'group_by': 'category'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--    tree-->
+        <record id="vehicle_brand_view_tree" model="ir.ui.view">
+            <field name="name">vehicle.brand.view.tree</field>
+            <field name="model">vehicle.brand</field>
+            <field name="arch" type="xml">
+                <tree string="Vehicle Brands">
+                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="origin"/>
+                    <field name="segment"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form-->
+        <record id="vehicle_brand_view_form" model="ir.ui.view">
+            <field name="name">vehicle.brand.view.form</field>
+            <field name="model">vehicle.brand</field>
+            <field name="arch" type="xml">
+                <form string="Vehicle Brand">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="category"/>
+                            </group>
+                            <group>
+                                <field name="origin"/>
+                                <field name="segment"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

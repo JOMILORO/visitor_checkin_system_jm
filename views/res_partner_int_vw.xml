@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="res_partner_visitor_view_form_inherit_jm" model="ir.ui.view">
+            <field name="name">res.partner.visitor.view.form.inherit.jm</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" name="action_view_visits" type="object" icon="fa-arrows-v"
+                            invisible="not (is_visitor == True)">
+                        <div class="o_stat_info">
+                            <field name="visitor_count" class="o_stat_value"/>
+                            <span class="o_stat_text">Visits</span>
+                        </div>
+                    </button>
+                </div>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <!-- Add your fields or attributes here -->
+                    <field name="is_visitor"/>
+                </xpath>
+                <notebook position="inside">
+                    <page string="Personal visitor ID" invisible="not (is_visitor == True)">
+                        <group>
+                            <group>
+                                <field name="type_visitor_identification_id"/>
+                                <field name="visitor_personal_identification"/>
+                            </group>
+                        </group>
+                        <group string="Personal ID imagen">
+                            <group>
+                                <field name="personal_id_imagen" widget="image" class="o_course_image" string="Face A"/>
+                            </group>
+                            <group>
+                                <field name="personal_id_imagen_b" widget="image" class="o_course_image" string="Face B"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <!--    tree
+        <record id="visitor_view_tree" model="ir.ui.view">
+            <field name="name">visitor.view.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Visitors">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record> -->
+
+        <!--    form
+        <record id="visitor_view_form" model="ir.ui.view">
+            <field name="name">visitor.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form string="Visitor">
+                    <sheet>
+                        <div class="oe_title mb24">
+                            <field name="is_company" invisible="1"/>
+                            <field name="type" invisible="1"/>
+                            <field name="company_type" widget="radio" options="{'horizontal': true}"/>
+                            <h1>
+                                <field id="company" options="{'line_breaks': False}" widget="text" class="text-break"
+                                       name="name" default_focus="1" placeholder="e.g. Lumber Inc"
+                                       invisible="not is_company" required="type == 'contact'"/>
+                                <field id="individual" options="{'line_breaks': False}" widget="text" class="text-break"
+                                       name="name" default_focus="1" placeholder="e.g. Brandom Freeman"
+                                       invisible="is_company" required="type == 'contact'"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="function" placeholder="e.g. Sales Director" invisible="is_company"/>
+                                <field name="phone" widget="phone"/>
+                                <field name="mobile" widget="phone"/>
+                                <field name="email" widget="email" context="{'gravatar_image': True}"/>
+                            </group>
+                            <group>
+                                <field name="title" options="{&quot;no_open&quot;: True}" placeholder="e.g. Mister"
+                                       invisible="is_company"/>
+                                <field name="category_id" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"
+                                       placeholder="e.g. &quot;B2B&quot;, &quot;VIP&quot;, &quot;Consulting&quot;, ..."/>
+                                <field name="is_visitor"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Personal visitor ID" invisible="not (is_visitor == True)">
+                                <group>
+                                    <group>
+                                        <field name="type_visitor_identification_id"/>
+                                        <field name="visitor_personal_identification"/>
+                                    </group>
+                                </group>
+                                <group string="Personal ID imagen">
+                                    <group>
+                                        <field name="personal_id_imagen" widget="image" class="o_course_image" string="Face A"/>
+                                    </group>
+                                    <group>
+                                        <field name="personal_id_imagen_b" widget="image" class="o_course_image" string="Face B"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
+
+
+        <!--Action to res.partner
+        <record id="res_partner_visit_action" model="ir.actions.act_window">
+            <field name="name">Visit as contact</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_visitor', '=', True)]</field>
+            <field name="context">{'default_is_visitor': True}</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                   (0, 0, {'view_mode': 'tree', 'view_id': ref('visitor_checkin_system_jm.visitor_view_tree')}),
+                   (0, 0, {'view_mode': 'form', 'view_id': ref('visitor_checkin_system_jm.visitor_view_form')})
+                   ]"/>
+        </record> -->
+
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_visitor_management_card_manager,access.visitor.management.card.manager,model_visitor_management_card,base.group_user,1,1,1,1
+access_property_counter_manager,access.property.counter.manager,model_property_counter,base.group_user,1,1,1,1
+access_personal_belongings_manager,access.personal.belongings.manager,model_personal_belongings,base.group_user,1,1,1,1
+access_visit_insight_manager,access.visit.insight.manager,model_visit_insight,base.group_user,1,1,1,1
+access_vehicle_insight_manager,access.vehicle.insight.manager,model_vehicle_insight,base.group_user,1,1,1,1
+access_vehicle_brand_manager,access.vehicle.brand.manager,model_vehicle_brand,base.group_user,1,1,1,1
+access_type_visitor_identification_manager,access.type.visitor.identification.manager,model_type_visitor_identification,base.group_user,1,1,1,1
+access_visit_insight_individual_manager,access.visit.insight.individual.manager,model_visit_insight_individual,base.group_user,1,1,1,1

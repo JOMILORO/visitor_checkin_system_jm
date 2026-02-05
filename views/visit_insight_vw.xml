@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    search-->
+        <record id="visit_insight_view_search" model="ir.ui.view">
+            <field name="name">visit.insight.view.search</field>
+            <field name="model">visit.insight</field>
+            <field name="arch" type="xml">
+                <search string="Visit insight">
+                    <field name="visitor_card_id" string="Visitor card" filter_domain="[('visitor_card_id', 'ilike', self)]"/>
+                    <field name="partner_id" string="Visitor name" filter_domain="[('partner_id', 'ilike', self)]"/>
+                    <field name="visitor_id" string="Visitor ID" filter_domain="[('visitor_id', 'ilike', self)]"/>
+                    <field name="name" string="Folio" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="visitor_company_name" string="Company name" filter_domain="[('visitor_company_name', 'ilike', self)]"/>
+                    <filter name="active_filter" string="Archived" domain="[('active', '=', False)]"/>
+                    <separator/>
+                    <filter name="has_personal_belonging_filter" string="Personal belonging" domain="[('has_personal_belonging', '=', True)]"/>
+                    <filter name="has_car_filter" string="Car access" domain="[('has_car', '=', True)]"/>
+                    <filter name="is_group_filter" string="Group visit" domain="[('is_group', '=', True)]"/>
+                    <separator/>
+                    <filter name="is_checkin" string="Visit active" domain="[('state', '=', 'checkin')]"/>
+                    <group>
+                        <filter name="group_by_employee_id" string="Meeting With" context="{'group_by': 'employee_id'}"/>
+                        <filter name="group_by_state" string="Status" context="{'group_by': 'state'}"/>
+                        <filter name="group_by_partner_id" string="Visitor name" context="{'group_by': 'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--    tree-->
+        <record id="visit_insight_view_tree" model="ir.ui.view">
+            <field name="name">visit.insight.view.tree</field>
+            <field name="model">visit.insight</field>
+            <field name="arch" type="xml">
+                <tree string="Visit insights">
+                    <field name="name"/>
+                    <field name="visitor_id" optional="show"/>
+                    <field name="partner_id"/>
+                    <field name="type_visitor_identification_id" optional="show"/>
+                    <field name="visitor_personal_identification" optional="show"/>
+                    <field name="visitor_company_name"/>
+                    <field name="meeting_with"/>
+                    <field name="visitor_card_id" optional="show"/>
+                    <field name="visitor_card_type" optional="show"/>
+                    <field name="employee_department"/>
+                    <field name="has_personal_belonging" optional="show"/>
+                    <field name="has_car" optional="show"/>
+                    <field name="is_group" optional="show"/>
+                    <field name="check_in_datetime"/>
+                    <field name="check_out_datetime"/>
+                    <field name="duration" optional="show"/>
+                    <field name="formatted_duration"/>
+                    <field name="state"/>
+                    <button name="action_checkout" string="Checkout" type="object" class="oe_highlight"
+                            invisible="(check_out_datetime) or (state == 'cancelled')"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form-->
+        <record id="visit_insight_view_form" model="ir.ui.view">
+            <field name="name">visit.insight.view.form</field>
+            <field name="model">visit.insight</field>
+            <field name="arch" type="xml">
+                <form string="Visit insight">
+                    <field name="active" invisible="1"/>
+                    <header>
+                        <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"
+                                invisible="not (check_in_datetime or check_out_datetime or state == 'draft')"/>
+                        <button name="action_draft" string="Draft" type="object" class="oe_highlight"
+                                invisible="not (check_in_datetime or check_out_datetime or state == 'cancelled')"/>
+                        <button name="action_checkin" string="Check In" type="object" class="oe_highlight"
+                                invisible=" not (state == 'draft')"/>
+                        <button name="action_checkout1" string="Check Out" type="object" class="oe_highlight"
+                                invisible=" not (state == 'draft' or state == 'checkin')"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,checkin,checkout,cancelled"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_view_visits" type="object" icon="fa-arrows-v">
+                                <div class="o_stat_info">
+                                    <field name="visitor_count" class="o_stat_value"/>
+                                    <span class="o_stat_text">Visits</span>
+                                </div>
+                            </button>
+                        </div>
+                        <field name="is_company" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg-color="bg-danger" invisible="active"/>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="partner_id" string="Visitor Full Name"/>
+                            <h1><field name="partner_id" domain="[('is_company', '=', False)]"
+                                       class="oe_inline" placeholder="Visitor Full Name"/></h1>
+                        </div>
+                        <group>
+                            <group string="Visit details">
+                                <field name="visitor_id" readonly="1"/>
+                                <field name="phone_no"/>
+                                <field name="mail_id"/>
+                                <field name="visitor_company_name"/>
+                            </group>
+                            <group string="CheckIn/CheckOut Details">
+                                <field name="name"/>
+                                <field name="check_in_datetime"/>
+                                <field name="check_out_datetime"/>
+                                <field name="duration" invisible="1"/>
+                                <field name="formatted_duration"/>
+                            </group>
+                            <group string="Meeting With">
+                                <field name="employee_id"/>
+                                <field name="employee_contact"/>
+                                <field name="employee_work_email"/>
+                                <field name="employee_department"/>
+                            </group>
+                            <group string="Other belonging">
+                                <field name="has_personal_belonging"/>
+                                <field name="has_car"/>
+                                <field name="is_group"/>
+                            </group>
+                        </group>
+                        <group string="Purpose Of Visit">
+                            <field name="purpose_of_visit"/>
+                        </group>
+                        <notebook>
+                            <page string="Personal visitor ID">
+                                <group>
+                                    <group>
+                                        <field name="visitor_card_id"/>
+                                        <field name="visitor_card_type"/>
+                                    </group>
+                                    <group>
+                                        <field name="type_visitor_identification_id"/>
+                                        <field name="visitor_personal_identification"/>
+                                    </group>
+                                </group>
+                                <group string="Personal ID imagen">
+                                    <group>
+                                        <field name="personal_id_imagen" widget="image" class="o_course_image"
+                                               string="Face A"/>
+                                    </group>
+                                    <group>
+                                        <field name="personal_id_imagen_b" widget="image" class="o_course_image"
+                                               string="Face B"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Personal Belongings" invisible="not (has_personal_belonging == True)">
+                                <field name="property_ids">
+                                    <tree editable="true">
+                                        <field name="visit_insight_ids"/>
+                                        <field name="property_name"/>
+                                        <field name="property_count"/>
+                                        <field name="permission"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Personal vehicle" invisible="not (has_car == True)">
+                                <field name="vehicle_insight_ids">
+                                    <tree editable="true">
+                                        <field name="visit_insight_id"/>
+                                        <field name="name"/>
+                                        <field name="trailer_plate" optional="show"/>
+                                        <field name="brand_id"/>
+                                        <field name="model"/>
+                                        <field name="year_manufacture"/>
+                                        <field name="color" widget="color_picker" optional="show"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Visiting companion" invisible="not (is_group == True)">
+                                <field name="visit_insight_individual_ids">
+                                    <tree editable="true">
+                                        <field name="visit_insight_id"/>
+                                        <field name="companion_name" string="Companion/Visitor"/>
+                                        <field name="type2_visitor_identification_id"/>
+                                        <field name="visitor2_personal_identification"/>
+                                        <field name="visitor2_card_id"/>
+                                        <field name="visitor2_card_type"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+
+    <!--Action to visitor.management.card-->
+    <record id="visitor_management_card_action" model="ir.actions.act_window">
+        <field name="name">Visitor Card</field>
+        <field name="res_model">visitor.management.card</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first visitor card
+            </p>
+        </field>
+    </record>
+
+    <!--Action to property.counter-->
+    <record id="property_counter_action" model="ir.actions.act_window">
+        <field name="res_model">property.counter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first property counter
+            </p>
+        </field>
+    </record>
+
+    <!--Action to visit.insight-->
+    <record id="visit_insight_action" model="ir.actions.act_window">
+        <field name="res_model">visit.insight</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first visit
+            </p>
+        </field>
+    </record>
+
+    <!--Action today visits to visit.insight-->
+    <record id="visit_insight_today_visits_action" model="ir.actions.act_window">
+        <field name="name">Today's Visits</field>
+        <field name="res_model">visit.insight</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">
+            [('check_in_datetime', '&gt;=', context_today().strftime('%Y-%m-%d 00:00:00')),
+             ('check_in_datetime', '&lt;=', context_today().strftime('%Y-%m-%d 23:59:59'))]
+        </field>
+    </record>
+
+    <!--Action visits active to visit.insight-->
+
+    <!--Action to vehicle.brand-->
+    <record id="vehicle_brand_action" model="ir.actions.act_window">
+        <field name="name">Vehicle Brands</field>
+        <field name="res_model">vehicle.brand</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new vehicle brand
+            </p>
+        </field>
+    </record>
+
+    <!--Action to type.visitor.identification-->
+    <record id="type_visitor_identification_action" model="ir.actions.act_window">
+        <field name="name">Identification types</field>
+        <field name="res_model">type.visitor.identification</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new type of identification
+            </p>
+        </field>
+    </record>
+
+    <!--Action to visit.insight.individual-->
+    <record id="visit_insight_individual_action" model="ir.actions.act_window">
+        <field name="name">Visit insight individual</field>
+        <field name="res_model">visit.insight.individual</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There are no registered visits yet.
+            </p>
+            <p>
+                Visits are created from the "Visits template" on "Visits" menu. Here you will see the individual breakdown of
+                each person who has logged in.
+            </p>
+        </field>
+    </record>
+
+    <!--Action visits active visit.insight.individual-->
+    <record id="visit_active_insight_individual_action" model="ir.actions.act_window">
+        <field name="name">Visit active individual</field>
+        <field name="res_model">visit.insight.individual</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">
+            [('state', '=', 'checkin')]
+        </field>
+    </record>
+
+    <!--Action to res.partner -->
+        <record id="res_partner_visit_action" model="ir.actions.act_window">
+            <field name="name">Visit as contact</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_visitor', '=', True), ('is_company', '=', False)]</field>
+            <field name="context">{'default_is_visitor': True}</field>
+        </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="visitor_management_root"
+              name="Vistor Management"
+              sequence="0"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_todays_visit"
+              name="Today's Visits"
+              parent="visitor_management_root"
+              action="visit_insight_today_visits_action"
+              sequence="10"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent -->
+    <menuitem id="menu_visit_insight"
+              name="Visits"
+              parent="visitor_management_root"
+              sequence="20"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_visit_insight_template"
+              name="Visits template"
+              parent="menu_visit_insight"
+              action="visit_insight_action"
+              sequence="10"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_visit_insight_individual"
+              name="Visits"
+              parent="menu_visit_insight"
+              action="visit_insight_individual_action"
+              sequence="20"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_property_counter"
+              name="Property Counter"
+              parent="visitor_management_root"
+              action="property_counter_action"
+              sequence="30"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent -->
+    <menuitem id="menu_catalogs_categ"
+              name="Catalogs"
+              parent="visitor_management_root"
+              sequence="40"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_visitor_management_card_categ"
+              name="Visitor Card"
+              parent="menu_catalogs_categ"
+              action="visitor_management_card_action"
+              sequence="10"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_visitor_management_categ"
+              name="Visitors"
+              parent="menu_catalogs_categ"
+              action="res_partner_visit_action"
+              sequence="20"
+              groups="base.group_user"/>
+
+
+    <!-- This Menu Item must have a parent -->
+    <menuitem id="menu_reports_categ"
+              name="Reports"
+              parent="visitor_management_root"
+              sequence="50"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_visits_active"
+              name="Visits active"
+              parent="menu_reports_categ"
+              action="visit_active_insight_individual_action"
+              sequence="10"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent -->
+    <menuitem id="menu_settings_categ"
+              name="Settings"
+              parent="visitor_management_root"
+              sequence="60"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_type_visitor_identification"
+              name="Identification types"
+              parent="menu_settings_categ"
+              action="type_visitor_identification_action"
+              sequence="10"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_vehicle_brand_categ"
+              name="Vehicle Brands"
+              parent="menu_settings_categ"
+              action="vehicle_brand_action"
+              sequence="20"
+              groups="base.group_user"/>
+
+</odoo>

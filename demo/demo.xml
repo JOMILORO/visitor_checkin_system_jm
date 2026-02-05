@@ -1,0 +1,286 @@
+<odoo>
+    <data>
+
+        <!--
+            Model: visitor.management.card
+            Data entry for the visitor.management.card model
+        -->
+        <record id="visitor_card_00" model="visitor.management.card">
+            <field name="name">TMC00000</field>
+            <field name="note">Visitor Management Card folio TMC00000, type visitor</field>
+        </record>
+        <record id="visitor_card_01" model="visitor.management.card">
+            <field name="name">TMC00001</field>
+            <field name="note">Visitor Management Card folio TMC00001, type visitor</field>
+        </record>
+        <record id="visitor_card_02" model="visitor.management.card">
+            <field name="name">TMC00002</field>
+            <field name="note">Visitor Management Card folio TMC00002, type visitor</field>
+        </record>
+        <record id="visitor_card_03" model="visitor.management.card">
+            <field name="name">TMC00003</field>
+            <field name="note">Visitor Management Card folio TMC00003, type visitor</field>
+        </record>
+        <record id="visitor_card_04" model="visitor.management.card">
+            <field name="name">TMC00004</field>
+            <field name="note">Visitor Management Card folio TMC00004, type visitor</field>
+        </record>
+        <record id="visitor_card_05" model="visitor.management.card">
+            <field name="name">TMC00005</field>
+            <field name="note">Visitor Management Card folio TMC00005, type visitor</field>
+        </record>
+
+        <!--
+            Model: vehicle.brand
+            Data entry for the vehicle.brand model
+        -->
+        <record id="vehicle_brand_00" model="vehicle.brand">
+            <field name="name">Nissan</field>
+            <field name="category">automobile</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Líder de mercado / Sedanes</field>
+        </record>
+        <record id="vehicle_brand_01" model="vehicle.brand">
+            <field name="name">General Motors (Chevrolet)</field>
+            <field name="category">automobile</field>
+            <field name="origin">EE. UU.</field>
+            <field name="segment">SUV / Pickups / Eléctricos</field>
+        </record>
+        <record id="vehicle_brand_02" model="vehicle.brand">
+            <field name="name">Volkswagen</field>
+            <field name="category">automobile</field>
+            <field name="origin">Alemania</field>
+            <field name="segment">Pasajeros / SUV</field>
+        </record>
+        <record id="vehicle_brand_03" model="vehicle.brand">
+            <field name="name">Toyota</field>
+            <field name="category">automobile</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Híbridos / Pickups</field>
+        </record>
+        <record id="vehicle_brand_04" model="vehicle.brand">
+            <field name="name">Kia</field>
+            <field name="category">automobile</field>
+            <field name="origin">Corea del Sur</field>
+            <field name="segment">SUV / Sedanes</field>
+        </record>
+        <record id="vehicle_brand_05" model="vehicle.brand">
+            <field name="name">Mazda</field>
+            <field name="category">automobile</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Sedanes / SUV Premium</field>
+        </record>
+        <record id="vehicle_brand_06" model="vehicle.brand">
+            <field name="name">Peugeot</field>
+            <field name="category">automobile</field>
+            <field name="origin">Francia</field>
+            <field name="segment">SUV / Diseño / Utilitarios ligeros</field>
+        </record>
+        <record id="vehicle_brand_07" model="vehicle.brand">
+            <field name="name">MG Motor</field>
+            <field name="category">automobile</field>
+            <field name="origin">China (SAIC)</field>
+            <field name="segment">SUV / Pasajeros</field>
+        </record>
+        <record id="vehicle_brand_08" model="vehicle.brand">
+            <field name="name">BYD</field>
+            <field name="category">automobile</field>
+            <field name="origin">China</field>
+            <field name="segment">Eléctricos / Híbridos enchufables</field>
+        </record>
+        <record id="vehicle_brand_09" model="vehicle.brand">
+            <field name="name">Chirey (Chery)</field>
+            <field name="category">automobile</field>
+            <field name="origin">China</field>
+            <field name="segment">SUV</field>
+        </record>
+        <record id="vehicle_brand_10" model="vehicle.brand">
+            <field name="name">Hyundai</field>
+            <field name="category">automobile</field>
+            <field name="origin">Corea del Sur</field>
+            <field name="segment">SUV / Pasajeros</field>
+        </record>
+        <record id="vehicle_brand_11" model="vehicle.brand">
+            <field name="name">Ford</field>
+            <field name="category">automobile</field>
+            <field name="origin">EE. UU.</field>
+            <field name="segment">Pickups / SUV / Deportivos</field>
+        </record>
+        <record id="vehicle_brand_12" model="vehicle.brand">
+            <field name="name">Stellantis (Jeep/Ram/Dodge)</field>
+            <field name="category">automobile</field>
+            <field name="origin">Multinacional</field>
+            <field name="segment">Pickups / Todoterreno</field>
+        </record>
+        <record id="vehicle_brand_13" model="vehicle.brand">
+            <field name="name">Honda</field>
+            <field name="category">automobile</field>
+            <field name="origin">Japón</field>
+            <field name="segment">SUV / Sedanes</field>
+        </record>
+        <record id="vehicle_brand_14" model="vehicle.brand">
+            <field name="name">Suzuki</field>
+            <field name="category">automobile</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Subcompactos</field>
+        </record>
+        <record id="vehicle_brand_15" model="vehicle.brand">
+            <field name="name">Tesla</field>
+            <field name="category">automobile</field>
+            <field name="origin">EE. UU.</field>
+            <field name="segment">Eléctricos Premium</field>
+        </record>
+        <record id="vehicle_brand_16" model="vehicle.brand">
+            <field name="name">BMW</field>
+            <field name="category">automobile</field>
+            <field name="origin">Alemania</field>
+            <field name="segment">Lujo / Eléctricos</field>
+        </record>
+        <record id="vehicle_brand_17" model="vehicle.brand">
+            <field name="name">Mercedes-Benz</field>
+            <field name="category">automobile</field>
+            <field name="origin">Alemania</field>
+            <field name="segment">Lujo / Vans</field>
+        </record>
+        <record id="vehicle_brand_18" model="vehicle.brand">
+            <field name="name">Audi</field>
+            <field name="category">automobile</field>
+            <field name="origin">Alemania</field>
+            <field name="segment">Lujo / SUV</field>
+        </record>
+        <record id="vehicle_brand_19" model="vehicle.brand">
+            <field name="name">Lexus</field>
+            <field name="category">automobile</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Lujo Híbrido</field>
+        </record>
+        <record id="vehicle_brand_20" model="vehicle.brand">
+            <field name="name">Zacua</field>
+            <field name="category">automobile</field>
+            <field name="origin">México</field>
+            <field name="segment">Micro-autos Eléctricos</field>
+        </record>
+        <record id="vehicle_brand_21" model="vehicle.brand">
+            <field name="name">VUHL</field>
+            <field name="category">automobile</field>
+            <field name="origin">México</field>
+            <field name="segment">Deportivos de alto rendimiento</field>
+        </record>
+        <record id="vehicle_brand_22" model="vehicle.brand">
+            <field name="name">Otro</field>
+            <field name="category">truck_automobile</field>
+            <field name="origin">México</field>
+            <field name="segment">Carga, Autobuses y Automóvil</field>
+        </record>
+        <record id="vehicle_brand_23" model="vehicle.brand">
+            <field name="name">Kenworth</field>
+            <field name="category">truck</field>
+            <field name="origin">EE. UU. / México</field>
+            <field name="segment">Tractocamiones de carga</field>
+        </record>
+        <record id="vehicle_brand_24" model="vehicle.brand">
+            <field name="name">Freightliner</field>
+            <field name="category">truck</field>
+            <field name="origin">EE. UU.</field>
+            <field name="segment">Tractocamiones de carga</field>
+        </record>
+        <record id="vehicle_brand_25" model="vehicle.brand">
+            <field name="name">International (Navistar)</field>
+            <field name="category">truck</field>
+            <field name="origin">EE. UU.</field>
+            <field name="segment">Carga y Autobuses</field>
+        </record>
+        <record id="vehicle_brand_26" model="vehicle.brand">
+            <field name="name">Scania</field>
+            <field name="category">truck</field>
+            <field name="origin">Suecia</field>
+            <field name="segment">Carga pesada / Autobuses foráneos</field>
+        </record>
+        <record id="vehicle_brand_27" model="vehicle.brand">
+            <field name="name">Volvo Trucks/Buses</field>
+            <field name="category">truck</field>
+            <field name="origin">Suecia</field>
+            <field name="segment">Carga y Autobuses Premium</field>
+        </record>
+        <record id="vehicle_brand_28" model="vehicle.brand">
+            <field name="name">Hino (Toyota)</field>
+            <field name="category">truck</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Carga ligera y mediana</field>
+        </record>
+        <record id="vehicle_brand_29" model="vehicle.brand">
+            <field name="name">Isuzu</field>
+            <field name="category">truck</field>
+            <field name="origin">Japón</field>
+            <field name="segment">Carga ligera y mediana</field>
+        </record>
+        <record id="vehicle_brand_30" model="vehicle.brand">
+            <field name="name">Foton</field>
+            <field name="category">truck</field>
+            <field name="origin">China</field>
+            <field name="segment">Carga ligera / Eléctricos</field>
+        </record>
+        <record id="vehicle_brand_31" model="vehicle.brand">
+            <field name="name">Mercedes-Benz Autobuses</field>
+            <field name="category">truck</field>
+            <field name="origin">Alemania</field>
+            <field name="segment">Transporte de pasajeros</field>
+        </record>
+        <record id="vehicle_brand_32" model="vehicle.brand">
+            <field name="name">MAN</field>
+            <field name="category">truck</field>
+            <field name="origin">Alemania</field>
+            <field name="segment">Carga y Autobuses</field>
+        </record>
+        <record id="vehicle_brand_33" model="vehicle.brand">
+            <field name="name">Mack Trucks</field>
+            <field name="category">truck</field>
+            <field name="origin">EE. UU.</field>
+            <field name="segment">Construcción y carga pesada</field>
+        </record>
+        <record id="vehicle_brand_34" model="vehicle.brand">
+            <field name="name">JAC (Carga)</field>
+            <field name="category">truck</field>
+            <field name="origin">China</field>
+            <field name="segment">Carga ligera y eléctrica</field>
+        </record>
+
+        <!--
+            Model: type.visitor.identification
+            Data entry for the type.visitor.identification model
+        -->
+        <record id="type_visitor_identification_00" model="type.visitor.identification">
+            <field name="name">Credencial para votar (INE/IFE)</field>
+            <field name="short_description">Es la identificación más común y aceptada.</field>
+        </record>
+        <record id="type_visitor_identification_01" model="type.visitor.identification">
+            <field name="name">Pasaporte vigente</field>
+            <field name="short_description">Expedido por la Secretaría de Relaciones Exteriores (SRE).</field>
+        </record>
+        <record id="type_visitor_identification_02" model="type.visitor.identification">
+            <field name="name">Cédula profesional</field>
+            <field name="short_description">Con fotografía, emitida por la Secretaría de Educación Pública (SEP).</field>
+        </record>
+        <record id="type_visitor_identification_03" model="type.visitor.identification">
+            <field name="name">Cartilla del Servicio Militar Nacional</field>
+            <field name="short_description">Liberada.</field>
+        </record>
+        <record id="type_visitor_identification_04" model="type.visitor.identification">
+            <field name="name">Documento migratorio vigente</field>
+            <field name="short_description">Tratándose de extranjeros, documento emitido por la autoridad competente (formato migratorio).</field>
+        </record>
+        <record id="type_visitor_identification_05" model="type.visitor.identification">
+            <field name="name">Licencia de conducir</field>
+            <field name="short_description">Válida para identificación en la mayoría de los casos.</field>
+        </record>
+        <record id="type_visitor_identification_06" model="type.visitor.identification">
+            <field name="name">Credencial del INAPAM/Jubilados/Pensionados</field>
+            <field name="short_description">Con fotografía.</field>
+        </record>
+        <record id="type_visitor_identification_07" model="type.visitor.identification">
+            <field name="name">Credencial del IMSS, ISSSTE o ISSFAM</field>
+            <field name="short_description">Con fotografía.</field>
+        </record>
+
+    </data>
+</odoo>
