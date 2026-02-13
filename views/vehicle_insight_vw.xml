@@ -65,5 +65,50 @@
             </field>
         </record>
 
+        <record id="view_vehicle_insight_search" model="ir.ui.view">
+            <field name="name">view.vehicle.insight.search</field>
+            <field name="model">vehicle.insight</field>
+            <field name="arch" type="xml">
+                <search string="Search Vehicles">
+                    <field name="name" string="License plate"/>
+                    <field name="folio" string="Folio"/>
+
+                    <group expand="0" string="Group by">
+                        <filter string="License plate"
+                                name="group_by_name"
+                                context="{'group_by': 'name'}"/>
+
+                        <filter string="Make (of car)"
+                                name="group_by_brand"
+                                context="{'group_by': 'brand_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--    tree-->
+        <record id="vehicle_insight_view_tree" model="ir.ui.view">
+            <field name="name">vehicle.insight.view.tree</field>
+            <field name="model">vehicle.insight</field>
+            <field name="arch" type="xml">
+                <tree string="Vehicle Insight" create="0">
+                    <field name="folio"/>
+                    <field name="visitor_card_name" optional="show"/>
+                    <field name="partner_name"/>
+                    <field name="visitor_company_name" optional="show"/>
+                    <field name="employee_name"/>
+                    <field name="name"/>
+                    <field name="trailer_plate" optional="show"/>
+                    <field name="brand_id"/>
+                    <field name="model" optional="show"/>
+                    <field name="year_manufacture" optional="show"/>
+                    <field name="color" widget="color_picker" optional="show"/>
+                    <field name="check_in_datetime"/>
+                    <field name="check_out_datetime"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
     </data>
 </odoo>

@@ -112,6 +112,13 @@
             <field name="context">{'default_is_visitor': True}</field>
         </record>
 
+    <!--Action vehicle insight vehicle.insight-->
+    <record id="vehicle_insight_action" model="ir.actions.act_window">
+        <field name="name">Vehicle insight</field>
+        <field name="res_model">vehicle.insight</field>
+        <field name="view_mode">tree</field>
+    </record>
+
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="visitor_management_root"
               name="Vistor Management"
@@ -143,10 +150,18 @@
 
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="menu_visit_insight_individual"
-              name="Visits"
+              name="Visits individual"
               parent="menu_visit_insight"
               action="visit_insight_individual_action"
               sequence="20"
+              groups="base.group_user"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="menu_vehicle_insight"
+              name="Vehicle insight"
+              parent="menu_visit_insight"
+              action="vehicle_insight_action"
+              sequence="30"
               groups="base.group_user"/>
 
     <!-- This Menu Item must have a parent and an action -->

@@ -23,6 +23,22 @@ class VehicleInsight(models.Model):
                                    copy=False)
     color = fields.Integer(string="Color", readonly=False)
 
+    # Basic fields, related fields to fetch visits details
+    folio = fields.Char(string="Folio", related="visit_insight_id.name")
+    partner_name = fields.Char(string="Visitor name", related="visit_insight_id.partner_id.name")
+    visitor_company_name = fields.Char(string="Company name", related="visit_insight_id.visitor_company_name")
+    employee_name = fields.Char(string="Meeting With", related="visit_insight_id.employee_id.name")
+    visitor_card_name = fields.Char(string="Visitor Card", related="visit_insight_id.visitor_card_id.name")
+    check_in_datetime = fields.Datetime(string="CheckIn Date", related="visit_insight_id.check_in_datetime")
+    check_out_datetime = fields.Datetime(string="CheckOut Date", related="visit_insight_id.check_out_datetime")
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('checkin', 'CheckIn'),
+        ('checkout', 'CheckOut'),
+        ('cancelled', 'Cancelled')
+    ], string='Status', related="visit_insight_id.state")
+
+
 
 class VehicleBrand(models.Model):
     # Identification attributes and database
